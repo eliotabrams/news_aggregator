@@ -55,11 +55,11 @@ def save_feeds():
     destination = 'news_table.csv'
     if not (os.path.exists(destination)):
         print('creating new file')
-        get_feeds().to_csv(destination, encoding='utf-8')
+        get_feeds().to_csv(destination, encoding='utf-8', index=False)
     else:
         print('appending to existing file')
         news_table = get_feeds().append(pd.read_csv(destination, encoding='utf-8'))
-        news_table.drop_duplicates('title').to_csv(destination, encoding='utf-8')
+        news_table.drop_duplicates('title').to_csv(destination, encoding='utf-8', index=False)
     print('Done')
 
 
